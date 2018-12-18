@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class ObstacleMovement : MonoBehaviour
 {
-
+    [SerializeField] private float obstacleSpeed = 20;
+    public float newSpeed = 2;
 
     void Update()
     {
-        transform.position -= new Vector3(0, 0, (BuildingSpawnController.speed*2) * Time.deltaTime);
+        transform.position -= new Vector3(0f, 0f, (obstacleSpeed * newSpeed) * Time.deltaTime);
         if(transform.position.y <= -10)
             Destroy(this.gameObject);
     }
