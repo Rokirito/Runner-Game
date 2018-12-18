@@ -19,4 +19,12 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3(0, 0.5f, -2f);
         }
     }
+
+    private void OnTriggerEnter(Collider Obstacle)
+    {
+        if (Obstacle.GetComponent<Collider>().tag == "Obstacle")
+        {
+            Debug.Log("Perdiste");
+        }
+    }
 }

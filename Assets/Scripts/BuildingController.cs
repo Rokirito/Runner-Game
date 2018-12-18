@@ -16,32 +16,31 @@ public class BuildingController : MonoBehaviour
     public float nextTimeSpawnEnviroment;
     public float timeBetweenSpawns;
 
-
     void Start(){
-      buildingParents = GameObject.FindGameObjectWithTag("Building");
-      enviromentParents = GameObject.FindGameObjectWithTag("Enviroment");
-      SpawnBuilding();
+        buildingParents = GameObject.FindGameObjectWithTag("Building");
+        enviromentParents = GameObject.FindGameObjectWithTag("Enviroment");
+        SpawnBuilding();
     }
 
     void Update(){
-      if (buildingIsDead){
-        SpawnBuilding();
-       }
-     if(Time.time >= nextTimeSpawnEnviroment){
-        nextTimeSpawnEnviroment = Time.time + timeBetweenSpawns;
-        SpawnEnviroment();
-     }
+        if (buildingIsDead){
+            SpawnBuilding();
+        }
+        if (Time.time >= nextTimeSpawnEnviroment){
+            nextTimeSpawnEnviroment = Time.time + timeBetweenSpawns;
+            SpawnEnviroment();
+        }
     }
 
     public void SpawnBuilding(){
         for(int i = 0; i <= buildingPrefabs.Length-1; i++){
-          newBuildPrefab = Instantiate(buildingPrefabs[i], buildingPrefabs[i].transform.position, buildingPrefabs[i].transform.rotation);
-          newBuildPrefab.transform.parent = buildingParents.transform;
+            newBuildPrefab = Instantiate(buildingPrefabs[i], buildingPrefabs[i].transform.position, buildingPrefabs[i].transform.rotation);
+            newBuildPrefab.transform.parent = buildingParents.transform;
         }
         buildingIsDead = false;
     }
 
-      public void SpawnEnviroment(){
+    public void SpawnEnviroment(){
         randomEnviromentNumber = Random.Range(0, (enviromentPrefabs.Length-1));
         newEnviromentPrefab = Instantiate(enviromentPrefabs[randomEnviromentNumber], enviromentPrefabs[randomEnviromentNumber].transform.position, enviromentPrefabs[randomEnviromentNumber].transform.rotation);
         newEnviromentPrefab.transform.parent = enviromentParents.transform;
