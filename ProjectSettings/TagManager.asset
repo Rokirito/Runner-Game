@@ -8,6 +8,8 @@ TagManager:
   - BuildingBlue
   - BuildingGreen
   - BuildingGray
+  - Building
+  - Enviroment
   layers:
   - Default
   - TransparentFX

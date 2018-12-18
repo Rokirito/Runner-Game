@@ -4,19 +4,47 @@ using UnityEngine;
 
 public class BuildingController : MonoBehaviour
 {
-    [SerializeField] private GameObject[] building;
-    private Vector3 position;   
-    private int buildPrefab;
+    [SerializeField] private GameObject[] buildingPrefabs;
+    [SerializeField] private GameObject[] enviromentPrefabs;
+    private GameObject buildingParents;
+    private GameObject enviromentParents;
+    private GameObject newBuildPrefab;
+    private GameObject newEnviromentPrefab;
+    private int randomEnviromentNumber;
+    internal bool buildingIsDead;
+    internal bool enviromentIsDead;
+    public float nextTimeSpawnEnviroment;
+    public float timeBetweenSpawns;
 
-    void Update()
-    {
-        transform.position -= new Vector3(0, 0, BuildingSpawnController.speed * Time.deltaTime);
-        position = transform.position;
-        if (position.z <= -10)
-        {
-            buildPrefab = Random.Range(0, (building.Length-1));
-            Instantiate(building[buildPrefab], new Vector3(transform.position.x, transform.position.y, 40), transform.rotation);
-            Destroy(this.gameObject);
+
+    void Start(){
+      buildingParents = GameObject.FindGameObjectWithTag("Building");
+      enviromentParents = GameObject.FindGameObjectWithTag("Enviroment");
+      SpawnBuilding();
+    }
+
+    void Update(){
+      if (buildingIsDead){
+        SpawnBuilding();
+       }
+     if(Time.time >= nextTimeSpawnEnviroment){
+        nextTimeSpawnEnviroment = Time.time + timeBetweenSpawns;
+        SpawnEnviroment();
+     }
+    }
+
+    public void SpawnBuilding(){
+        for(int i = 0; i <= buildingPrefabs.Length-1; i++){
+          newBuildPrefab = Instantiate(buildingPrefabs[i], buildingPrefabs[i].transform.position, buildingPrefabs[i].transform.rotation);
+          newBuildPrefab.transform.parent = buildingParents.transform;
         }
+        buildingIsDead = false;
+    }
+
+      public void SpawnEnviroment(){
+        randomEnviromentNumber = Random.Range(0, (enviromentPrefabs.Length-1));
+        newEnviromentPrefab = Instantiate(enviromentPrefabs[randomEnviromentNumber], enviromentPrefabs[randomEnviromentNumber].transform.position, enviromentPrefabs[randomEnviromentNumber].transform.rotation);
+        newEnviromentPrefab.transform.parent = enviromentParents.transform;
+        enviromentIsDead = false;
     }
 }

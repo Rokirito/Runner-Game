@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 1104985532280230360}
   - component: {fileID: 7067549660010550177}
   - component: {fileID: 1956729266543341620}
-  - component: {fileID: 3039166759471586299}
   m_Layer: 0
   m_Name: BuildingOrange
   m_TagString: BuildingRed
@@ -29,9 +28,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3039166759471586298}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10, y: 3.5, z: 0}
-  m_LocalScale: {x: 6, y: 6, z: 6}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -97,22 +96,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3039166759471586299
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 2478426773174270211, guid: 472a2699eef34ad4e9505661c466523f,
-    type: 3}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3039166759471586298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bbf20a2621895140ad3126dcfc78454, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 20
-  building:
-  - {fileID: 3039166759471586298, guid: 905019685ff6da24bb0d2526454177ab, type: 3}
-  - {fileID: 1428248252376482515, guid: 8a39fa11d0c69fc45b71ce578f934b2c, type: 3}
-  - {fileID: 3566974889786863866, guid: 91b3220e1984bfd4498470c13a1f4d5c, type: 3}
-  - {fileID: 3892763458363174940, guid: 1f0d9cd2e2f5c6e48987503afd0cf8df, type: 3}
