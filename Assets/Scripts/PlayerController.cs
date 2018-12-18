@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float playerSpeed = 15f;
-    private float xMovement;
+    //[SerializeField] private float playerSpeed = 15f;
+    //private float xMovement;
 
     void Update()
     {
-        if(transform.position.x >= -4 && transform.position.x <= 4)
-        {
-            xMovement = Input.GetAxisRaw("Horizontal") * playerSpeed * Time.deltaTime;
-            transform.position = new Vector3(transform.position.x + xMovement, transform.position.y, transform.position.z);
+        if (Input.GetAxisRaw("Horizontal") == 1){
+            transform.position = new Vector3(3, 0.5f, -2f);
         }
-        if (transform.position.x > 4)
-            transform.position = new Vector3(4, transform.position.y, transform.position.z);
-        if (transform.position.x < -4)
-            transform.position = new Vector3(-4, transform.position.y, transform.position.z);
+        else if (Input.GetAxisRaw("Horizontal") == -1){
+            transform.position = new Vector3(-3, 0.5f, -2f);
+        }
+        else{
+            transform.position = new Vector3(0, 0.5f, -2f);
+        }
     }
 }

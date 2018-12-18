@@ -4,12 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Obstacle
+  - BuildingGray
+  - BuildingGreen
   - BuildingRed
   - BuildingBlue
-  - BuildingGreen
-  - BuildingGray
-  - Building
-  - Enviroment
   layers:
   - Default
   - TransparentFX
@@ -19,7 +18,7 @@ TagManager:
   - UI
   - 
   - 
-  - PostProcessing
+  - 
   - 
   - 
   - 
