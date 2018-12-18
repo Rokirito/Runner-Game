@@ -1,49 +1,68 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class ObstacleController : MonoBehaviour
 {
     [SerializeField] private GameObject Obstacle;
     private AudioSource music;
-    private int musicTimer;
     private bool[] trigger;
-    private bool joder=true;
+    private bool spawnObstacle = false;
+    private float value;
 
     // Start is called before the first frame update
     void Start()
     {
-        music = GetComponent<AudioSource>();
-        trigger = new bool[3];
-        for(int i = 0; i < 2 ; i++){
-            trigger[i] = true;
-        }
+      music = GetComponent<AudioSource>();
+      StartCoroutine(GetPositionWithSound());
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (music.time >= 4 && trigger[0] == true)
-        {
-            Debug.Log(music.panStereo);
-            music.panStereo = 0;
-            Instantiate(Obstacle, new Vector3(0, 0.5f, 65), transform.rotation);
-            Debug.Log("1");
-            trigger[0] = false;
-        }
-        if (music.time >= 8 && trigger[1] == true)
-        {
-            music.panStereo = 1;
-            Instantiate(Obstacle, new Vector3(3.25f, 0.5f, 65), transform.rotation);
-            Debug.Log("2");
-            trigger[1] = false;
-        }
-        if (music.time >= 12 && joder == true)
-        {
-            music.panStereo = -1;
-            Instantiate(Obstacle, new Vector3(-3.25f, 0.5f, 65), transform.rotation);
-            Debug.Log("3");
-            joder = false;
-        }
+      if (value > 0.5f && value < 2.6f && spawnObstacle == true && Time.time <= music.time + 1 ||
+      value > 8.0f && value < 26.0f && spawnObstacle == true && Time.time <= music.time + 1)
+      {
+          music.panStereo = 0;
+          Instantiate(Obstacle, new Vector3(0, 0.5f, 65), transform.rotation);
+          value = 0;
+          spawnObstacle = false;
+      }
+      if (value > 2.6f && spawnObstacle == true && Time.time <= music.time + 1 ||
+        value > 26.0f && spawnObstacle == true && Time.time <= music.time + 1)
+      {
+          music.panStereo = 1;
+          Instantiate(Obstacle, new Vector3(3.25f, 0.5f, 65), transform.rotation);
+          value = 0;
+          spawnObstacle = false;
+      }
+      if (value < 0.5f && spawnObstacle == true && Time.time <= music.time + 1||
+      value < 8.0f && spawnObstacle == true && Time.time <= music.time + 1)
+      {
+          music.panStereo = -1;
+          Instantiate(Obstacle, new Vector3(-3.25f, 0.5f, 65), transform.rotation);
+          value = 0;
+          spawnObstacle = false;
+      }
+
+
     }
+    IEnumerator GetPositionWithSound(){
+
+        float[] spectrum = new float[512];
+
+        AudioListener.GetSpectrumData(spectrum, 0, FFTWindow.Rectangular);
+
+        for (int i = 1; i < spectrum.Length - 1; i++)
+        {
+            value += spectrum[i] * 10;
+//            Debug.Log(value);
+
+        }
+        spawnObstacle = true;
+        yield return new WaitForSeconds(.5f);
+          StartCoroutine(GetPositionWithSound());
+    }
+
 }
