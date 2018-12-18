@@ -8,6 +8,7 @@ TagManager:
   - BuildingBlue
   - BuildingGreen
   - BuildingGray
+  - Obstacle
   layers:
   - Default
   - TransparentFX
