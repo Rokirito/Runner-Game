@@ -5,20 +5,11 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public static float score = 0;
-    [SerializeField] private GameObject scoreObject;
-    private Text scoreText;
+    private float score = 0;
+    [SerializeField] private Text scoreText;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        scoreText = scoreObject.GetComponent<Text>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        Debug.Log(score);
     }
 
     // puede recibir un enemy type para modificar el score.
