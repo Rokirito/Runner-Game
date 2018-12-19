@@ -9,6 +9,9 @@ TagManager:
   - BuildingGreen
   - BuildingRed
   - BuildingBlue
+  - Building
+  - Enviroment
+  - UIManager
   layers:
   - Default
   - TransparentFX

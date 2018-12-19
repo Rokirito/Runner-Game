@@ -12,10 +12,11 @@ public class PlayerController : MonoBehaviour
         if (Input.GetAxisRaw("Horizontal") == 1){
             transform.position = new Vector3(3, 0.5f, -2f);
         }
-        else if (Input.GetAxisRaw("Horizontal") == -1){
+        if (Input.GetAxisRaw("Horizontal") == -1){
             transform.position = new Vector3(-3, 0.5f, -2f);
         }
-        else{
+        if (Input.GetAxisRaw("Vertical") == -1)
+        {
             transform.position = new Vector3(0, 0.5f, -2f);
         }
     }

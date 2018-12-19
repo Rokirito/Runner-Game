@@ -57,12 +57,10 @@ public class ObstacleController : MonoBehaviour
         for (int i = 1; i < spectrum.Length - 1; i++)
         {
             value += spectrum[i] * 10;
-//            Debug.Log(value);
-
+            //Debug.Log(value);
         }
         spawnObstacle = true;
         yield return new WaitForSeconds(.5f);
           StartCoroutine(GetPositionWithSound());
     }
-
 }
