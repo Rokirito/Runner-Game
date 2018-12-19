@@ -21,23 +21,23 @@ public class ObstacleController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      if (value > 0.5f && value < 2.6f && spawnObstacle == true && Time.time <= music.time + 1 ||
-      value > 8.0f && value < 26.0f && spawnObstacle == true && Time.time <= music.time + 1)
+      if (value > 0.8f && value < 2.2f && spawnObstacle == true && Time.time <= music.time + 1 ||
+      value > 8.0f && value < 22.0f && spawnObstacle == true && Time.time <= music.time + 1)
       {
           music.panStereo = 0;
           Instantiate(Obstacle, new Vector3(0, 0.5f, 65), transform.rotation);
           value = 0;
           spawnObstacle = false;
       }
-      if (value > 2.6f && spawnObstacle == true && Time.time <= music.time + 1 ||
-        value > 26.0f && spawnObstacle == true && Time.time <= music.time + 1)
+      if (value > 2.2f && spawnObstacle == true && Time.time <= music.time + 1 ||
+        value > 22.0f && spawnObstacle == true && Time.time <= music.time + 1)
       {
           music.panStereo = 1;
           Instantiate(Obstacle, new Vector3(3.25f, 0.5f, 65), transform.rotation);
           value = 0;
           spawnObstacle = false;
       }
-      if (value < 0.5f && spawnObstacle == true && Time.time <= music.time + 1||
+      if (value < 0.8f && spawnObstacle == true && Time.time <= music.time + 1||
       value < 8.0f && spawnObstacle == true && Time.time <= music.time + 1)
       {
           music.panStereo = -1;
